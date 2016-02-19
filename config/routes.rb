@@ -9,7 +9,13 @@ Rails.application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
   
   root 'pages#home'
+  
   get 'about' => 'pages#about'
+  
+  get 'signup', to: 'users#new'
+  
+  #post 'users', to: 'users#create'
+  resources :users, except: [:new]
   
   resources :articles
 
