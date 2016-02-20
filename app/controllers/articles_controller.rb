@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
     before_action :set_article, only: [:edit, :update, :show, :destroy]
     
     def index
-        @articles = Article.all
+        @articles = Article.paginate(page: params[:page], per_page: 5)
     end
     
     def new
@@ -15,7 +15,6 @@ class ArticlesController < ApplicationController
     
     def create
         @article = Article.new(ar_prms)
-        debugger
         @article.user = User.first
         if @article.save
             flash[:success] = "Article was successfuly created!"
