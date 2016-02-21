@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   #post 'users', to: 'users#create'
   resources :users, except: [:new]
   
+  resources :categories, except: [:destroy]
+  
   resources :articles
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
